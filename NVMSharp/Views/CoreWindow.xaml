@@ -1,4 +1,4 @@
-﻿<wpfspark:SparkWindow
+﻿<Window
     x:Class="NVMSharp.Views.CoreWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -13,28 +13,12 @@
     Height="700"
     FontSize="16"
     mc:Ignorable="d">
-    <wpfspark:SparkWindow.Resources>
+    <Window.Resources>
         <converters:ContentVisibilityConverter x:Key="ContentVisibilityHelper" />
         <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityHelper" />
         <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityNegationHelper" IsReverse="True" />
-    </wpfspark:SparkWindow.Resources>
-    <wpfspark:SparkWindow.TitleEffect>
-        <DropShadowEffect
-            BlurRadius="16"
-            Direction="0"
-            RenderingBias="Quality"
-            ShadowDepth="1"
-            Color="#FFFFFF" />
-    </wpfspark:SparkWindow.TitleEffect>
-    <wpfspark:SparkWindow.TitleImage>
-        <Image
-            Width="24"
-            Height="24"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
-            Source="/NVMSharp;component/Resources/Images/nvmsharp.png" />
-    </wpfspark:SparkWindow.TitleImage>
-    <Grid x:Name="RootGrid" Background="#DBE6ECF0">
+    </Window.Resources>
+    <Grid x:Name="RootGrid">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="48" />
             <ColumnDefinition Width="*" />
@@ -59,7 +43,7 @@
                 Grid.ColumnSpan="3"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Stretch"
-                Fill="#ff014292" />
+                />
             <TextBlock
                 Margin="10,9,0,9"
                 HorizontalAlignment="Left"
@@ -183,36 +167,39 @@
                     ToolTip="Delete Value" />
 
             </StackPanel>
-            <ListBox
+            <ListView
                 Grid.Row="1"
                 Grid.Column="0"
-                Margin="0"
-                Padding="0"
+                Margin="8"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Stretch"
                 Background="Transparent"
                 BorderThickness="0"
                 ItemsSource="{Binding Path=DisplayKeys}"
-                SelectedValue="{Binding Path=ActiveKey, Mode=TwoWay}"
-                Style="{DynamicResource ListBox.Light.Style}" />
-            <GridSplitter
+                SelectedValue="{Binding Path=ActiveKey, Mode=TwoWay}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Mode=OneWay}" Margin="8,4" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <!--<GridSplitter
                 Grid.Row="1"
                 Grid.RowSpan="2"
                 Grid.Column="1"
                 Width="2"
                 VerticalAlignment="Stretch"
                 ResizeBehavior="PreviousAndNext"
-                ResizeDirection="Columns" />
+                ResizeDirection="Columns" />-->
             <ListBox
                 Grid.Row="1"
                 Grid.Column="2"
                 Margin="0"
                 Padding="0"
-                Background="#77FFFFFF"
                 BorderThickness="0"
                 ItemsSource="{Binding Path=DisplayValues}"
                 SelectedValue="{Binding Path=ActiveValue, Mode=TwoWay}"
-                Style="{DynamicResource ListBox.Light.Style}" />
+                />
         </Grid>
         <Grid
             x:Name="ImportGrid"
@@ -233,7 +220,7 @@
                 Grid.ColumnSpan="2"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Stretch"
-                Fill="#ff014292" />
+                />
             <TextBlock
                 Margin="10,9,0,9"
                 HorizontalAlignment="Left"
@@ -265,11 +252,11 @@
             <Border
                 Grid.Row="2"
                 Grid.ColumnSpan="2"
-                Background="#FFFFFF" />
+                 />
             <Border
                 Grid.Row="2"
                 Grid.ColumnSpan="2"
-                Background="#CCCCCC"
+                
                 Visibility="{Binding Path=HasInitImportStatus, Converter={StaticResource BooleanToVisibilityHelper}}" />
             <TextBlock
                 Grid.Row="2"
@@ -281,7 +268,7 @@
             <Border
                 Grid.Row="3"
                 Grid.ColumnSpan="2"
-                Background="#FFFFFF" />
+                />
             <ScrollViewer
                 Grid.Row="3"
                 Grid.ColumnSpan="2"
@@ -377,8 +364,7 @@
             </Grid.RowDefinitions>
             <Rectangle
                 HorizontalAlignment="Stretch"
-                VerticalAlignment="Stretch"
-                Fill="#ff014292" />
+                VerticalAlignment="Stretch" />
             <TextBlock
                 Margin="10,9,0,9"
                 HorizontalAlignment="Left"
@@ -386,14 +372,14 @@
                 FontSize="22"
                 Foreground="White"
                 Text="{Binding AppModeTitle}" />
-            <Border Grid.Row="1" Background="#CCCCCC" />
+            <Border Grid.Row="1" />
             <TextBlock
                 Grid.Row="1"
                 Margin="8,0"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center"
                 Text="{Binding InitExportStatus}" />
-            <Border Grid.Row="2" Background="#FFFFFF" />
+            <Border Grid.Row="2" />
             <ScrollViewer
                 Grid.Row="2"
                 PreviewMouseWheel="OnPreviewMouseWheel"
@@ -444,8 +430,7 @@
             <Rectangle
                 Grid.ColumnSpan="3"
                 HorizontalAlignment="Stretch"
-                VerticalAlignment="Stretch"
-                Fill="#ff014292" />
+                VerticalAlignment="Stretch" />
             <TextBlock
                 Margin="10,9,0,9"
                 HorizontalAlignment="Left"
@@ -487,12 +472,12 @@
             Width="48"
             HorizontalAlignment="Left"
             VerticalAlignment="Stretch"
-            Background="#F2F2F2"
             ZIndex="4">
             <StackPanel
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Stretch"
-                Background="#F2F2F2">
+                Background="{DynamicResource ComboBoxDropDownBackground}"
+                >
                 <!--  Menu (hamburger) button  -->
                 <RadioButton
                     BorderThickness="0"
@@ -516,7 +501,6 @@
                     BorderThickness="0"
                     Checked="OnViewSystemVariables"
                     Content="System"
-                    Foreground="Black"
                     Style="{StaticResource SplitViewNavButtonStyle}"
                     Tag="System.Glyph"
                     ToolTip="System" />
@@ -555,4 +539,4 @@
             </StackPanel>
         </Grid>
     </Grid>
-</wpfspark:SparkWindow>
+</Window>

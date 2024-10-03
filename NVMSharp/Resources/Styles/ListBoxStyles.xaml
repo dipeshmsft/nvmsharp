@@ -44,7 +44,7 @@ SOFTWARE.
         <Setter Property="SnapsToDevicePixels"
                 Value="True" />
         <Setter Property="Padding"
-                Value="4,0" />
+                Value="10,0" />
         <Setter Property="Background"
                 Value="Transparent" />
         <Setter Property="BorderBrush"
@@ -57,14 +57,13 @@ SOFTWARE.
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ListBoxItem}">
                     <Border x:Name="Bd"
-                            Margin="0"
                             Height="48"
                             HorizontalAlignment="Stretch"
                             BorderBrush="Transparent"
                             BorderThickness="0"
                             Background="{TemplateBinding Background}"
                             Padding="{TemplateBinding Padding}"
-                            TextElement.Foreground="Black"
+                            TextElement.Foreground="{DynamicResource TextFillColorPrimaryBrush}"
                             SnapsToDevicePixels="true">
                         <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                           SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
@@ -197,6 +196,7 @@ SOFTWARE.
                      Color="#FFFFFFFF" />
     <SolidColorBrush x:Key="ListBox.Disabled.Border"
                      Color="#FFD9D9D9" />
+    
     <Style x:Key="ListBox.Light.Style"
            TargetType="{x:Type ListBox}">
         <Setter Property="Background"

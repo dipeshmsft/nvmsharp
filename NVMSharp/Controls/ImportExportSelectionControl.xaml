@@ -51,14 +51,14 @@ SOFTWARE.
                           Grid.Column="0"
                           Grid.RowSpan="2"
                           x:Name="checkbox"
-                          Style="{DynamicResource CheckBox.Dark.Style}"
+                          HorizontalAlignment="Center"
+                          VerticalAlignment="Center"
                           IsChecked="{Binding Path=IsSelected}" />
                 <StackPanel Grid.Row="0"
                             Grid.Column="1"
                             Orientation="Horizontal">
                     <TextBlock FontSize="16"
                                FontWeight="DemiBold"
-                               Foreground="Red"
                                Margin="4,0,0,0"
                                Text="&#xE1F5;"
                                Style="{StaticResource IconGlyph.Dark.TextBlockStyle}"
@@ -67,11 +67,13 @@ SOFTWARE.
                                FontWeight="DemiBold"
                                VerticalAlignment="Center"
                                Margin="4,0"
+                               Foreground="{DynamicResource TextFillColorPrimaryBrush}"
                                Text="{Binding Key}"></TextBlock>
                 </StackPanel>
                 <TextBlock Grid.Row="1"
                            Grid.Column="1"
                            FontSize="12"
+                           Foreground="{DynamicResource TextFillColorPrimaryBrush}"
                            FontStyle="Italic"
                            Margin="4,-4,4,4"
                            VerticalAlignment="Center"
@@ -81,12 +83,11 @@ SOFTWARE.
             </Grid>
         </DataTemplate>
     </UserControl.Resources>
-    <Expander Style="{DynamicResource Expander.Dark.Style}"
+    <Expander
               IsExpanded="True">
         <Expander.Header>
             <CheckBox x:Name="HeaderCB"
                       Content="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=Header}"
-                      Style="{DynamicResource CheckBox.Dark.Style}"
                       Checked="HandleHeaderSelection"
                       Unchecked="HandleHeaderSelection"></CheckBox>
         </Expander.Header>
@@ -94,7 +95,6 @@ SOFTWARE.
             <ListBox x:Name="DataList"
                      BorderThickness="0"
                      Padding="0"
-                     Style="{StaticResource ListBox.Light.Style}"
                      ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                      ItemContainerStyle="{DynamicResource NoSelectionListBoxItemStyle}"
                      ItemTemplate="{StaticResource ItemDataTemplate}"

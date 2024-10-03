@@ -36,7 +36,7 @@ namespace NVMSharp.Views
     /// <summary>
     /// Interaction logic for CoreWindow.xaml
     /// </summary>
-    public partial class CoreWindow : SparkWindow
+    public partial class CoreWindow : Window
     {
         enum SplitViewMenuWidth
         {

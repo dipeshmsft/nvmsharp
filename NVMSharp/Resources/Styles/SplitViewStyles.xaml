@@ -78,8 +78,6 @@ SOFTWARE.
                 Value="True"></Setter>
         <Setter Property="Background"
                 Value="Transparent"></Setter>
-        <Setter Property="Foreground"
-                Value="Black"></Setter>
         <Setter Property="VerticalAlignment"
                 Value="Center" />
         <Setter Property="HorizontalAlignment"
@@ -95,9 +93,8 @@ SOFTWARE.
     <Style TargetType="RadioButton"
            x:Key="SplitViewMenuButtonStyle">
         <Setter Property="Background"
-                Value="{StaticResource MenuButtonBackgroundBrush}" />
-        <Setter Property="Foreground"
-                Value="{StaticResource SplitViewForegroundBrush}" />
+                Value="Transparent" />
+        <Setter Property="Foreground" Value="{DynamicResource TextPrimaryColorBrush}" />
         <Setter Property="Padding"
                 Value="0,0,0,0" />
         <Setter Property="FocusVisualStyle"
@@ -217,21 +214,21 @@ SOFTWARE.
                                   Grid.ColumnSpan="3">
                                 <Rectangle x:Name="PressedBackground"
                                            Visibility="Collapsed"
-                                           Fill="{StaticResource MenuButtonPressedBackgroundBrush}" />
+                                           Fill="{DynamicResource ControlAltFillColorQuarternaryBrush}" />
                                 <Rectangle x:Name="HoverBackground"
                                            Visibility="Collapsed"
-                                           Fill="{StaticResource MenuButtonHoverBackgroundBrush}" />
+                                           Fill="{DynamicResource ControlAltFillColorTertiaryBrush}" />
                             </Grid>
                             <Grid x:Name="CheckedBackground"
                                   Grid.ColumnSpan="3"
                                   Visibility="Collapsed"
-                                  Background="{StaticResource MenuButtonCheckedBackgroundBrush}">
+                                  Background="{DynamicResource ControlAltFillColorSecondaryBrush}">
                                 <Rectangle x:Name="CheckedPressedBackground"
                                            Visibility="Collapsed"
-                                           Fill="{StaticResource MenuButtonCheckedPressedBackgroundBrush}" />
+                                           Fill="{DynamicResource ControlAltFillColorSecondaryBrush}" />
                                 <Rectangle x:Name="CheckedHoverBackground"
                                            Visibility="Collapsed"
-                                           Fill="{StaticResource MenuButtonCheckedHoverBackgroundBrush}" />
+                                           Fill="{DynamicResource ControlAltFillColorSecondaryBrush}" />
                             </Grid>
 
                             <!-- focus -->
@@ -260,7 +257,7 @@ SOFTWARE.
                                     VerticalAlignment="Center">
                                 <Path x:Name="Glyph"
                                       SnapsToDevicePixels="True"
-                                      Fill="Black"
+                                      Fill="{DynamicResource TextFillColorPrimaryBrush}"
                                       Data="{TemplateBinding Tag, Converter={StaticResource GeometryConverter}}"></Path>
                             </Canvas>
                         </Grid>
@@ -272,10 +269,8 @@ SOFTWARE.
 
     <Style TargetType="RadioButton"
            x:Key="SplitViewNavButtonStyle">
-        <Setter Property="Background"
-                Value="{StaticResource NavButtonBackgroundBrush}" />
-        <Setter Property="Foreground"
-                Value="{StaticResource SplitViewForegroundBrush}" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
         <Setter Property="Padding"
                 Value="8,-2,0,0" />
         <Setter Property="HorizontalAlignment"
@@ -401,10 +396,10 @@ SOFTWARE.
                                   Grid.ColumnSpan="3">
                                 <Rectangle x:Name="PressedBackground"
                                            Visibility="Collapsed"
-                                           Fill="{StaticResource NavButtonPressedBackgroundBrush}" />
+                                           Fill="{DynamicResource ControlAltFillColorQuarternaryBrush}" />
                                 <Rectangle x:Name="HoverBackground"
                                            Visibility="Collapsed"
-                                           Fill="{StaticResource NavButtonHoverBackgroundBrush}" />
+                                           Fill="{DynamicResource ControlAltFillColorTertiaryBrush}" />
                             </Grid>
                             <Grid x:Name="CheckedBackground"
                                   Grid.ColumnSpan="3"
@@ -412,10 +407,12 @@ SOFTWARE.
                                   Background="{StaticResource NavButtonCheckedBackgroundBrush}">
                                 <Rectangle x:Name="CheckedPressedBackground"
                                            Visibility="Collapsed"
-                                           Fill="{StaticResource NavButtonCheckedPressedBackgroundBrush}" />
+                                           Opacity="0.8"
+                                           Fill="{StaticResource AccentFillColorDefaultBrush}" />
                                 <Rectangle x:Name="CheckedHoverBackground"
                                            Visibility="Collapsed"
-                                           Fill="{StaticResource NavButtonCheckedHoverBackgroundBrush}" />
+                                           Opacity="0.9"
+                                           Fill="{StaticResource AccentFillColorDefaultBrush}" />
                             </Grid>
 
                             <!-- glyph -->
@@ -430,7 +427,7 @@ SOFTWARE.
                                     VerticalAlignment="Center">
                                 <Path x:Name="Glyph"
                                       SnapsToDevicePixels="True"
-                                      Fill="Black"
+                                      Fill="{DynamicResource TextFillColorPrimaryBrush}"
                                       Data="{TemplateBinding Tag, Converter={StaticResource GeometryConverter}}"></Path>
                             </Canvas>
 
